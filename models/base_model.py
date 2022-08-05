@@ -8,67 +8,49 @@ import models
 
 
 class BaseModel:
-    """
-    Custom base for all the classes in the AirBnb console project
+    """Represent a BaseModel."""
 
-    Arttributes:
-        id(str): handles unique user identity
-        created_at: assigns current datetime
-        updated_at: updates current datetime
+    def __init__(self, *args, **kwargs):
+        """Initialize a new BaseModel"""
 
-    Methods:
-        __str__: prints the class name, id, and creates dictionary
-        representations of the input values
-        save(self): updates instance arttributes with current datetime
-        to_dict(self): returns the dictionary values of the instance obj
-
-    """
-    def __int__(self, *args, **kwargs):
-        """Public instance artributes initialization after creation
-        ==================
-        *args(args): arguments list (not used)
-        **kwargs(dict): dictionary of arguments to creat an object
-        """
-        if (kwargs):
-            for key, value in kwargs.items():
-                if key == 'id':
-                    self.id = str(uuid4())
-                elif key == 'created_at':
-                    self.created_at = datetime.strptime(value,
-                                                        '%Y-%m-%dT%H:%M:%S.%f')
-                elif key == 'updated_at':
-                    self.updated_at = datetime.strptime(value,
-                                                        '%Y-%m-%dT%H:%M:%S.%f')
-                else:
-                    if (key != '__class__'):
-                        setattr(self, key, value)
-        else:
+        if not kwargs:
             self.id = str(uuid4())
             self.created_at = datetime.now()
-            self.updated_at = self.created_at
+            self.updated_at = datetime.now()
             """models.storage.new(self)"""
+        else:
+            for key, val in kwargs.items():
+                if key != '__class__':
+                    if key == "created_at" or key == "updated_at":
+                        setattr(self, key, datetime.strptime(
+                            val, '%Y-%m-%dT%H:%M:%S.%f'))
+                    else:
+                        setattr(self, key, val)
 
     def __str__(self):
-        """
-        Returns string representation of the class
-        """
-        return ("[{}] ({}) {}".format(
-                self.__class__.__name__, self.id, self.__dict__))
+        """Return a string representation of the class"""
+
+        return "[{:s}] ({:s}) {:s}".format(
+            self.__class__.__name__,
+            self.id,
+            str(self.__dict__)
+        )
 
     def save(self):
-        """
-        Updates the public instance attribute:
-        'updated_at' - with the current datetime
-        """
-        self.updated_at = datetime.utcnow()
+        """Update the date field"""
+
+        self.updated_at = datetime.now()
         """models.storage.save()"""
+
     def to_dict(self):
-        """
-        Method returns a dictionary containing all
-        keys/values of __dict__ instance
-        """
-        class_dict = self.__dict__.copy()
-        class_dict.update({'__class__': self.__class__.__name__})
-        class_dict.update({'created_at': datetime.isoformat(self.created_at)})
-        class_dict.update({'updated_at': datetime.isoformat(self.updated_at)})
-        return class_dict
+        """Return a dictionary representation of the instance"""
+
+        rep = {
+            "__class__": self.__class__.__name__,
+            "created_at": self.created_at.isoformat(),
+            "updated_at": self.updated_at.isoformat()
+        }
+
+        dict_copy = self.__dict__.copy()
+        dict_copy.update(rep)
+        return dict_copy
