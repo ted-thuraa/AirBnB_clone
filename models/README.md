@@ -1,1 +1,1 @@
-baseclass for the entire project
+base_class for the entire project
