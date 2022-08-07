@@ -44,9 +44,9 @@ class HBNBCommand(cmd.Cmd):
                 new_instance = new_instance()
                 new_instance.save()
                 print(new_instance.id)
-            """except:
+            except ValueError:
                 print("** class doesn't exist **")
-            """
+
         else:
             print("** class name misssing **")
 
@@ -61,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
                     key = "{}.{}".format(arg[0], arg[1])
                     try:
                         print(models.storage.all()[key])
-                    except:
+                    except ValueError:
                         print("** no instance found **")
                 else:
                     print("** instance id missing **")
@@ -71,7 +71,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
 
     def do_destroy(self, arg):
-        """Deletes an instance based on the class name and id and saves changes"""
+        """Deletes an instance based on the class name and id and saves changes
+        """
         if arg:
             arg = arg.split()
             if arg[0] in models.dummy_classes:
@@ -81,7 +82,7 @@ class HBNBCommand(cmd.Cmd):
                         deleted = models.storage.all().pop(key)
                         del(deleted)
                         models.storage.save()
-                    except:
+                    except ValueError:
                         print("** no instance found **")
                 else:
                     print("** instance id missing **")
@@ -126,7 +127,7 @@ class HBNBCommand(cmd.Cmd):
                                 print("** value missing **")
                         else:
                             print("** attribute name missing **")
-                    except:
+                    except ValueError:
                         print("** no instance found **")
                 else:
                     print("** instance id missing **")
@@ -146,7 +147,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
         else:
-            for instance, obj in models,storage.all().items():
+            for instance, obj in models, storage.all().items():
                 count += 1
         print(count)
 

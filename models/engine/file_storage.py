@@ -6,13 +6,13 @@
 
 import json
 import models
-#from models.base_model import BaseModel
-#from models.user import User
-#from models.state import State
-#from models.city import City
-#from models.place import Place
-#from models.amenity import Amenity
-#from models.review import Review
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
@@ -32,12 +32,14 @@ class FileStorage:
         self.__objects[objId] = obj
 
     def save(self):
-         """ serializes __objects to the JSON file path """
+        """ serializes __objects to the JSON file path
          # get all the items in __objects, which are dicts
          # loop through all they keys and values.
          # do dict comprehension, for each key and value(to dictionary method)
-         x = json.dumps({k: v.to_dict() for k, v in self.__objects.items()})
-         with open(self.__file_path, mode='w', encoding='utf-8') as f:
+         """
+        x = json.dumps({k: v.to_dict() for k, v in self.__objects.items()})
+
+        with open(self.__file_path, mode='w', encoding='utf-8') as f:
             f.write(x)
 
     def reload(self):
@@ -50,19 +52,19 @@ class FileStorage:
             for k, v in temp.items():
                 temp_instance = models.dummy_classes[v["__class__"]](**v)
                 self.__objects[id] = temp_instance
-        except:
+        except ValueError:
             pass
 
-    #def save(self):
-    #    """Save object representation of JSON to a file"""
-#
+    """def save(self):
+    #    save object representation of JSON to a file
+
     #    with open(self.__file_path, mode='w', encoding='UTF-8') as myfile:
     #        to_json = {k: v.to_dict() for k, v in self.__objects.items()}
     #        json.dump(to_json, myfile)
-#
+
     #def reload(self):
-    #    """Function that creates an Object from a JSON file"""
-#
+    #    Function that creates an Object from a JSON file
+
     #    from_json = {}
     #    try:
     #        with open(self.__file_path, mode='r', encoding="UTF-8") as myfile:
@@ -70,4 +72,4 @@ class FileStorage:
     #            for key, value in from_json.items():
     #                attr_cls_name = value.pop("__class__")
     #                self.new(eval(attr_cls_name)(**value))
->>>>>>> 8e1988f57a0bbadb897e042639fd728e3ba6f8d5
+    """

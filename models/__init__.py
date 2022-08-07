@@ -12,11 +12,10 @@ from models.state import State
 from models.user import User
 from models.place import Place
 from models.amenity import Amenity
-
 dummy_classes = {"BaseModel": BaseModel, "User": User,
-        "Review": Review, "City": City,
-        "State": State, "Place": Place,
-        "Amenity": Amenity}
+                 "Review": Review, "City": City,
+                 "State": State, "Place": Place,
+                 "Amenity": Amenity}
 
 storage = FileStorage()
 storage.reload()
