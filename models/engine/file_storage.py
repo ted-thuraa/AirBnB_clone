@@ -42,9 +42,12 @@ class FileStorage:
         """Function that creates an Object from a JSON file"""
 
         from_json = {}
+        
         try:
             with open(self.__file_path, mode='r', encoding="UTF-8") as myfile:
                 from_json = json.load(myfile)
                 for key, value in from_json.items():
                     attr_cls_name = value.pop("__class__")
                     self.new(eval(attr_cls_name)(**value))
+        except:
+            pass
