@@ -87,5 +87,5 @@ EOF  help  quit
 (hbnb)
 $
 
-=========================================
+## Authors :black_nib:
 * **Austine Oduor Ngonga** <[austineoduor](https://github.com/austineoduor)>
