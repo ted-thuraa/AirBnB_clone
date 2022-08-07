@@ -2,14 +2,7 @@
 """ console that contains the entry point """
 
 import cmd
-from models.base_model import Basemodel
-from models.user import User
-from models.state import State
-from models.amenity import Amenity
-from models.place import Place
-from models.city import City
-from models.review import Review
-from models import storage
+import models
 import re
 
 class HBNBCommand(cmd.Cmd):
@@ -159,8 +152,32 @@ class HBNBCommand(cmd.Cmd):
         """
         match = re.fullmatch(r"[A-Za-Z]+\.[A-Za-z]+\(.*?\)", line)
         if match:
-            splitted = line.split('.')
+            splited = line.split('.')
+            if splited[0] in models.dummy_classes:
+                parsed = splited[1].split("(")
+                parsed[1] = parsed[1].strip(")")
+                args = parsed[1].split(",")
+                args = [arg.strip() for arg in args]
+                if len(args) >= 3:
+                    temp = args[2]
+                    args = [arg.strip('"') for arg in args[:2]]
+                    args.append(temp)
+                else:
+                    args = [arg.strip('"') for arg in args]
+                command = self.fetch_command(parsed[0])
+                if command:
+                    reconstructed_args = [arg for arg in args]
+                    reconstructed_args.insert(0, splited[0])
+                    reconstructed_command = " ".join(reconstructed_args)
+                    command(self, reconstructed_command)
+                else:
+                    print("*** Unknown syntax: {}".format(line))
+            else:
+                print("** class doesn't exist **")
+        else:
+            print("*** Unknown syntax: {}".format(line))
 
 
 if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+    # protects against execution when imported
+    HBNBCommand().cmdloop()  # recursively loops back until exited or errors
