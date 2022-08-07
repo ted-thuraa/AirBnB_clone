@@ -5,14 +5,18 @@ import cmd
 import models
 import re
 
+
 class HBNBCommand(cmd.Cmd):
-    """console"""
+    """console
+    """
     prompt = "(hbnb) "
+
     @classmethod
     def fetch_command(cls, command):
         """Gets the command typed in the console"""
-        commands = {"all": cls.do_all, "show": cls.do_show, "destroy": cls.do_destroy,
-        "update": cls.do_update, "count": cls.do_count}
+        commands = {"all": cls.do_all, "show": cls.do_show,
+                    "destroy": cls.do_destroy,
+                    "update": cls.do_update, "count": cls.do_count}
         if command in commands:
             return commands[command]
         else:
@@ -40,8 +44,9 @@ class HBNBCommand(cmd.Cmd):
                 new_instance = new_instance()
                 new_instance.save()
                 print(new_instance.id)
-            except:
+            """except:
                 print("** class doesn't exist **")
+            """
         else:
             print("** class name misssing **")
 
