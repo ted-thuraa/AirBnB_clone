@@ -22,9 +22,3 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
-
-    def __init__(self, *args, **kwargs):
-        """
-        Intializing the Place class and passing arguments
-        """
-        super().__init__(**kwargs)
