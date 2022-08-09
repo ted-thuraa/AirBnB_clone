@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         """ Creates a new instance of BaseModel, saves to a JSON file,
-        and prints the ID when finished """
+        and prints the ID when finished  """
 
         if arg:
             try:
@@ -105,7 +105,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """ Updates an instance based on the class name and ID.
-        Adds or updates attributes ans saves the changes """
+        Adds  """
         if arg:
             arg = arg.split()
             if arg[0] in models.dummy_classes:
@@ -148,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
     def default(self, line):
         """
         handle invalid commands and
-        special commands like <class name>.<command>()
+        special commands 
         """
         match = re.fullmatch(r"[A-Za-Z]+\.[A-Za-z]+\(.*?\)", line)
         if match:
