@@ -4,6 +4,7 @@
 import cmd
 import models
 import re
+import shlex
 
 class HBNBCommand(cmd.Cmd):
     """console"""
@@ -98,9 +99,11 @@ class HBNBCommand(cmd.Cmd):
                     if instance.split('.')[0] == arg[0]:
                         result.append(str(obj))
             else:
-                for instance, obj in models.storage.all().items():
-                    result.append(str(obj))
-            if result:
+                print("** class doesn't exist **")
+        else:
+            for instance, obj in models.storage.all().items():
+                result.append(str(obj))
+        if result:
                 print(result)
 
     def do_update(self, arg):
