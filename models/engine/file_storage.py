@@ -50,7 +50,7 @@ class FileStorage:
             with open(self.__file_path, mode='r', encoding='utf-8') as f:
                 x = json.loads(f.read())
                 for k, v in x.items():
-                        self.__objects[k] = obj_dict[v["__class__"]](**v)
+                    self.__objects[k] = obj_dict[v["__class__"]](**v)
                 # We read a dict, we iterate or enumerate through it
                 # We make a new __object[key] in file storage that
                 # Does access magic with the obj_dict. stores in the data
