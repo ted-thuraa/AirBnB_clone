@@ -211,6 +211,7 @@ class HBNBCommand(cmd.Cmd):
                     subkey[1] = subkey[1].replace(",", " ")
                     methods[subkey[0]](key[0] + " " + subkey[1])
 
+
 if __name__ == "__main__":
     # protects against execution when imported
     HBNBCommand().cmdloop()  # recursively loops back until exited or errors
