@@ -33,5 +33,6 @@ class TestState(unittest.TestCase):
         """ tests if the base model has the attr """
         self.assertTrue(hasattr(State, "save"))
 
+
 if __name__ == "__main__":
     unittest.main()

@@ -58,5 +58,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(BaseModel.__doc__)
         self.assertTrue(BaseModel.save.__doc__)
         self.assertTrue(BaseModel.to_dict.__doc__)
+
+
 if __name__ == '__main__':
     unittest.main()

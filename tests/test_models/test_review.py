@@ -41,5 +41,6 @@ class TestReview(unittest.TestCase):
         """ tests if the base model has the attr """
         self.assertTrue(hasattr(Review, "save"))
 
+
 if __name__ == "__main__":
     unittest.main()

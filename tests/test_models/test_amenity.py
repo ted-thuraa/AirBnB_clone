@@ -33,5 +33,6 @@ class TestAmenity(unittest.TestCase):
         """ tests if the base model has the attr """
         self.assertTrue(hasattr(Amenity, "save"))
 
+
 if __name__ == "__main__":
     unittest.main()

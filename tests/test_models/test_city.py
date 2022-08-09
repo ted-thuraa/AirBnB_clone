@@ -36,5 +36,6 @@ class TestCity(unittest.TestCase):
         """ tests if the base model has the attr """
         self.assertTrue(hasattr(City, "save"))
 
+
 if __name__ == "__main__":
     unittest.main()

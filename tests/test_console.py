@@ -17,5 +17,6 @@ class TestConsole(unittest.TestCase):
         apple = "orange"
         self.assertIsNotNone(apple)
 
+
 if __name__ == "__main__":
     unittest.main()
