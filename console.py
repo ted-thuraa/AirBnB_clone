@@ -12,7 +12,7 @@ class HBNBCommand(cmd.Cmd):
     def fetch_command(cls, command):
         """Gets the command typed in the console"""
         commands = {"all": cls.do_all, "show": cls.do_show, "destroy": cls.do_destroy,
-        "update": cls.do_update, "count": cls.do_count}
+        "update": cls.do_update, "count": cls.do_count, "create": cls.do_create}
         if command in commands:
             return commands[command]
         else:
