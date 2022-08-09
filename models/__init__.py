@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+from models.engine.file_storage import FileStorage
 """instantiates the storage system, and defines
     dummy classes for further use
 """
@@ -10,11 +12,10 @@ from models.state import State
 from models.user import User
 from models.place import Place
 from models.amenity import Amenity
-
 dummy_classes = {"BaseModel": BaseModel, "User": User,
-        "Review": Review, "City": City,
-        "State": State, "Place": Place,
-        "Amenity": Amenity}
+                 "Review": Review, "City": City,
+                 "State": State, "Place": Place,
+                 "Amenity": Amenity}
 
-storage = file_storage.FileStorage()
+storage = FileStorage()
 storage.reload()

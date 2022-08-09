@@ -8,7 +8,8 @@ from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Represent a Place."""
+    """Represent a Place.
+    """
 
     city_id = ""
     user_id = ""
