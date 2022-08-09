@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-
-"""
-    Defines a class State.
-"""
+""" A State class that inherits from BaseModel """
 
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """Represent a State."""
-
+    """ Inherits from BaseModel,
+    instantiate with empty string as values for attributes """
     name = ""

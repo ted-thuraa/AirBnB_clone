@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-
-"""
-    Defines a class Amenity.
-"""
+""" An Amenity class that inherits from BaseModel """
 
 from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
-    """Represent a Amenity."""
-
+    """ Inherits from BaseModel,
+    instantiate with empty string as values for attributes """
     name = ""

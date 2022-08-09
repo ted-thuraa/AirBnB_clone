@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-
-"""
-    Defines a class Review.
-"""
+""" A Review class that inherits from BaseModel """
 
 from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    """Represent a Review."""
-
+    """ Inherits from BaseModel,
+    instantiate with empty string as values for attributes """
     place_id = ""
     user_id = ""
     text = ""

@@ -1,16 +1,12 @@
 #!/usr/bin/python3
-
-"""
-    Defines a class Place.
-"""
+""" A Place class that inherits from BaseModel """
 
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Represent a Place.
-    """
-
+    """ Inherits from BaseModel,
+    instantiate with empty string as values for attributes """
     city_id = ""
     user_id = ""
     name = ""

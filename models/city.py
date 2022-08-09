@@ -1,14 +1,11 @@
 #!/usr/bin/python3
-
-"""
-    Defines a class City.
-"""
+""" A City class that inherits from BaseModel """
 
 from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """Represent a City."""
-
+    """ Inherits from BaseModel,
+    instantiate with empty string as values for attributes """
     state_id = ""
     name = ""
